@@ -149,7 +149,7 @@ div.sidebar {
 	margin: 0 0 0.5em 1em;
 	border: 1px solid #cccccc;
 	padding: 0.5rem 0.5em 0 0.5em;
-	background-color: #fffff8; /* Edward Morbius */
+	background-color: #fffff6; /* Edward Morbius */
 	width: 40%;
 	float: right;
 }
@@ -688,57 +688,7 @@ hr.docutils {
 /* formats for <PRE class="code"> */
 
 /* lovelace */
-.code  { background: #ffffff; } /*  */
-.code .comment { color: #888888; font-style: italic } /* .c */
-.code .comment.hashbang { color: #287088; font-style: italic } /* .ch */
-.code .comment.multiline { color: #888888; font-style: italic } /* .cm */
-.code .comment.preproc { color: #289870 } /* .cp */
-.code .comment.preprocfile { color: #888888; font-style: italic } /* .cpf */
-.code .comment.single { color: #888888; font-style: italic } /* .c1 */
-.code .comment.special { color: #888888; font-style: italic } /* .cs */
-.code .error { background-color: #a848a8 } /* .err */
-.code .generic.deleted { color: #c02828 } /* .gd */
-.code .generic.emph { font-style: italic } /* .ge */
-.code .generic.error { color: #c02828 } /* .gr */
-.code .generic.heading { color: #666666 } /* .gh */
-.code .generic.inserted { color: #388038 } /* .gi */
-.code .generic.output { color: #666666 } /* .go */
-.code .generic.prompt { color: #444444 } /* .gp */
-.code .generic.strong { font-weight: bold } /* .gs */
-.code .generic.subheading { color: #444444 } /* .gu */
-.code .generic.traceback { color: #2838b0 } /* .gt */
-.code .highlight { background-color: #ffffcc } /* .hll */
-.code .keyword { color: #2838b0 } /* .k */
-.code .keyword.constant { color: #444444; font-style: italic } /* .kc */
-.code .keyword.declaration { color: #2838b0; font-style: italic } /* .kd */
-.code .keyword.namespace { color: #2838b0 } /* .kn */
-.code .keyword.pseudo { color: #2838b0 } /* .kp */
-.code .keyword.reserved { color: #2838b0 } /* .kr */
-.code .keyword.type { color: #2838b0; font-style: italic } /* .kt */
-.code .literal.number.bin { color: #444444 } /* .mb */
-.code .literal.number { color: #444444 } /* .m */
-.code .literal.number.float { color: #444444 } /* .mf */
-.code .literal.number.hex { color: #444444 } /* .mh */
-.code .literal.number.integer { color: #444444 } /* .mi */
-.code .literal.number.integer.long { color: #444444 } /* .il */
-.code .literal.number.oct { color: #444444 } /* .mo */
-.code .literal.string.affix { color: #444444 } /* .sa */
-.code .literal.string.backtick { color: #b83838 } /* .sb */
-.code .literal.string.char { color: #a848a8 } /* .sc */
-.code .literal.string { color: #b83838 } /* .s */
-.code .literal.string.delimiter { color: #b85820 } /* .dl */
-.code .literal.string.doc { color: #b85820; font-style: italic } /* .sd */
-.code .literal.string.double { color: #b83838 } /* .s2 */
-.code .literal.string.escape { color: #709030 } /* .se */
-.code .literal.string.heredoc { color: #b83838 } /* .sh */
-
-
-/* -- Code Syntax Highlighting ----------------------------------------------*/
-
-/* formats for <PRE class="code"> */
-
-/* lovelace */
-.code  { background: #ffffff; } /*  */
+.code  { background: #fffff6; } /*  */
 .code .comment { color: #888888; font-style: italic } /* .c */
 .code .comment.hashbang { color: #287088; font-style: italic } /* .ch */
 .code .comment.multiline { color: #888888; font-style: italic } /* .cm */
@@ -813,7 +763,7 @@ hr.docutils {
 /* Formats for <CODE> elements (inline) */
 
 /* lovelace */
-code  { background: #ffffff; } /*  */
+code  { background: #fffff6; } /*  */
 code .comment { color: #888888; font-style: italic } /* .c */
 code .comment.hashbang { color: #287088; font-style: italic } /* .ch */
 code .comment.multiline { color: #888888; font-style: italic } /* .cm */
