@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ $dateFormat := default "Mon, Jan 2, 2006" (index .Site.Params "date_format") }}
+<article>
+  <header>
+    {{ with .Title }}
+    <div class="top-title"><h1>{{ . | markdownify }}</h1></div>
+    {{ end }}
+    {{ with .Params.author }}
+    <div class="top-author">{{ . }}</div>
+    {{ end }}
+    <div class="top-date"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format $dateFormat }}</time></div>
+    <p><hr class="docutils"></p>
+  </header>
+  <section>
+    {{ .Content }}
+  </section>
+</article>
+{{ end }}
+

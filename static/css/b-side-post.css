@@ -1,0 +1,222 @@
+/* B-side scheme
+ * - For documents written with inline asides (sidenotes and footnotes)
+ * -- expects markup based on Docutils (reStructuredText, not Markdown)
+ *
+ * Mobile: shrink asides, and flush them to the right
+ * Desktop: display asides in a separate column (in the right-hand margin)
+ *
+ * Adds some 'classes' to reStructuredText directives
+ * 'sidenote' -- tables, topics are fit into right-side margin
+ * 'titleless' -- sidenotes are displayed without titles
+ * 'fullwidth' -- tables, topics go across full width of page
+ * 'rising' -- sidenotes positioned upwards of insertion point
+ */
+
+/* ToDo:
+ * -- Ugly: footnotes inside a list (desktop: note is trapped inside <ul>)
+ * -- Oops: dropped support for 'sidenote' class (treat div like sidebar)
+ */
+
+
+
+/****************************************************************************/
+/* Asides */
+
+table.footnote {
+	float: right;
+	clear: both;
+	width: 50%;
+	text-align: right;
+
+	border-right: solid 1px #808080;
+	border-left: none;
+	border-top: none;
+	border-bottom: none;
+}
+div.sidebar {
+	float: right;
+	clear: both;
+	width: 40%;
+	position: relative;
+	text-align: right;
+
+	background: #fefefe;
+	border-right: solid 1px #808080;
+	border-left: none;
+	border-top: none;
+	border-bottom: none;
+}
+
+
+
+/****************************************************************************/
+/*
+ * Be responsive...
+ * -- these settings override 'mobile' values with a 'desktop' alternative
+ */
+/****************************************************************************/
+
+
+/* For images not otherwise overridden, constrain image to 100% width */
+img {
+	max-width: 100%;
+}
+
+
+/*
+ * if width wide enough, then put asides in wide right-hand margin
+ */
+@media (min-width: 900px) {
+	/* fabricate a multi-column appearance
+	 * left margin: 10%
+	 * main column: 55%
+	 * gutter: 5%
+	 * 2nd column: 30%
+	 * right margin: 0%
+	 */
+
+	section {
+		padding-left: 10%
+	}
+
+
+	/*
+	 * most basic content goes into left-most 2/3rds of display
+	 */
+	div > p,
+	div > dl,
+	div > ol,
+	div > ul,
+	div > table,
+	div > blockquote {
+		width: 55%;
+	}
+
+	div.figure {
+		/* note: same width as the basic paragraph */
+		max-width: 55%;
+	}
+	div.figure > img {
+		max-width: 100%;
+	}
+	div.sidebar > div.figure {
+		max-width: 90%;
+	}
+
+
+	/*
+	 * Support a 'fullwidth' class override
+	 */
+	p.fullwidth {
+		width: 90%;
+	}
+
+	div.fullwidth,
+	table.fullwidth {
+		width: 90%;
+	}
+	div.section > div.figure > img.fullwidth {
+		max-width: 80vw;
+	}
+
+
+	/*
+	 * Topics: left side, but don't re-subdivide
+	 */
+	div.topic {
+		width: 55%;
+	}
+	div.topic > p,
+	div.topic > dl,
+	div.topic > ol,
+	div.topic > ul,
+	div.topic > table {
+		width: 100%;
+	}
+	div.topic p {
+		/* ensure that a paragraph in a topic uses topics full width*/
+		width: auto;
+	}
+
+
+	/*
+	 * Sidebars and footnotes: move  over to right edge
+	 */
+	div.sidebar,
+	table.footnote {
+		/* push the footnote and asidess to the right */
+		position: relative;
+		float: right;
+		clear: right;
+		width: 30%;
+
+		/* and override 'base' styling for sidenotes */
+		line-height: 1.25;
+		text-align: left;
+		border: none;
+	}
+	div.sidebar img {
+		/* images in a sidebar should use 100% of sidebar */
+		max-width: 90%;
+	}
+
+	/*
+	 * Admonitions: center across whole width
+	 */
+	div.admonition {
+		position: relative;
+		float: right;
+		clear: right;
+		width: 30%;
+		text-align: left;
+	}
+	div.admonition > p,
+	div.admonition > dl,
+	div.admonition > ol,
+	div.admonition > ul,
+	div.admonition > table {
+		width: 100%;
+		font-size: 1rem;
+		line-height: 1.25;
+	}
+
+	/* Added 'rising' class to sidebar directive: upwards from mark */
+	div.rising.sidebar {
+		transform: translateY(-100%);
+	}
+}
+
+
+
+/*
+ * if too narrow, then transform fullwidth (wider) tables into long columns
+ */
+@media (max-width: 899px) {
+
+	table.fullwidth thead,
+	table.fullwidth tbody,
+	table.fullwidth th,
+	table.fullwidth td,
+	table.fullwidth tr {
+		display: block;
+	}
+	table.fullwidth tr {
+		border-bottom: 1px solid #cccccc;
+		/* markup includes colgroup widths...
+		 * we are forced to override preset widths */
+		width: 300px;
+		width: 90vw;
+	}
+	table.fullwidth th {
+		text-align: left;
+		border-bottom: 1px solid #eeeeee;
+	}
+	table.fullwidth td {
+		text-align: right;
+		border-bottom: 1px solid #eeeeee;
+		padding-left: 50%;
+	}
+	table.fullwidth {
+		border-bottom: none;
+	}
+}

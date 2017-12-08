@@ -1,0 +1,887 @@
+/* Base CSS for theme
+ * -- loosely derived from html4css1.css from Docutils
+ */
+
+
+/*****************************************************************************/
+/* Colors:
+ * foreground: #222222
+ * background: #fefefe
+ * ??? #fffff6 -- from Edward Morbius (for a very warm "white")
+ * selection color: #b4d5fe -- straight from Adam Schwartz's "Smarter Link"
+ * Borders: #ddb #ccc (use #cccccc, and #eeeeee maybe #e4e4e4)
+ * Yellow highlight: #f2f2a6 (yellow, 75% saturation, 80% lightness)
+ * ... or #f5f5a3 (80%sat, 80%light)
+ * Yellow text: #fbe54e hsl(yellow/52, 96%, 65%)
+ * Citation table and left-edge of admonitons: #808080
+ * Rubric: #a00000
+ */
+
+
+
+/*****************************************************************************/
+/* Very basic settings                                                       */
+
+@charset "UTF-8";
+
+body {
+	font-family: "Roboto", Ariel, Helvetica, sans-serif;
+	background-color: #fefefe;
+	color: #222222;
+}
+
+
+/*****************************************************************************/
+/* Simple 'responsive' behavior                                              */
+
+html {
+	font-size: 10px;
+	/* ACA: 8px might make the font scaling work better? */
+}
+
+@media (min-width: 400px) {
+	html {
+		font-size: 12px;
+	}
+}
+
+@media (min-width: 800px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+@media (min-width: 900px) {
+	section {
+		padding-left: 10%;
+	}
+}
+
+@media (min-width: 1300px) {
+	section {
+		padding-left: 20%;
+	}
+}
+
+
+/*****************************************************************************/
+/* B-Side Basics                                                             */
+
+/* Larger type for most stuff */
+:not(li) > p,
+div.section > ol.simple > li,
+div.section > ul.simple > li {
+	/* Note: "simple" UL/OL are the non-indented lists */
+	font-size: 1.5rem;
+	line-height: 1.5;
+}
+
+/* Keep type smaller for tightly formatted parts */
+li p,
+dd p,
+table p,
+blockquote p,
+table.footnote p,
+div.sidebar p,
+div.legend p,
+div.figure p.caption {
+	width: auto;
+	font-size: 1rem;
+	line-height: 1.25;
+}
+
+
+/*****************************************************************************/
+/* reStructuredText settings                                                 */
+
+
+/* -- special classes ------------------------------------------------------- */
+
+img.align-left,
+.figure.align-left,
+object.align-left {
+	clear: left;
+	float: left;
+	margin-right: 1rem;
+}
+
+img.align-right,
+.figure.align-right,
+object.align-right {
+	clear: right;
+	float: right;
+	margin-left: 1rem;
+}
+
+img.align-center,
+.figure.align-center,
+object.align-center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
+
+div.titleless p.topic-title,
+div.titleless p.sidebar-title,
+div.titleless p.admonition-title {
+        display: none;
+}
+
+
+/* -- figures --------------------------------------------------------------- */
+
+
+
+/* -- sidebars -------------------------------------------------------------- */
+
+div.sidebar {
+	margin: 0 0 0.5em 1em;
+	border: 1px solid #cccccc;
+	padding: 0.5rem 0.5em 0 0.5em;
+	background-color: #fffff8; /* Edward Morbius */
+	width: 40%;
+	float: right;
+}
+
+p.sidebar-title {
+	font-weight: bold;
+}
+
+
+/* -- topics ---------------------------------------------------------------- */
+
+div.topic {
+	margin: 1rem 0 1rem 0;
+	border: 1px solid #cccccc;
+	padding: 0.5rem 0.5em 0 0.5em;
+}
+
+p.topic-title {
+	text-align: center;
+	font-size: 1.25rem;
+	font-weight: bold;
+	margin-top: 1rem;
+}
+
+ul.auto-toc {
+	list-style-type: none
+}
+
+
+/* -- admonitions ----------------------------------------------------------- */
+
+div.admonition {
+	border: solid 1px #808080;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	padding: 0.5rem 0.5em 0.5rem 0.5em;
+}
+
+div.admonition dt {
+	font-weight: bold;
+}
+
+div.admonition dl {
+	margin-bottom: 0;
+}
+
+p.admonition-title {
+	margin: 0 1rem 0.5em 0;
+	font-weight: bold;
+}
+div.attention p.admonition-title {
+	color: #a00000;
+}
+div.caution p.admonition-title {
+	color: #a00000;
+}
+div.danger p.admonition-title {
+	color: #a00000;
+}
+div.error p.admonition-title {
+	color: #a00000;
+}
+
+div.body p.centered {
+	text-align: center;
+	margin-top: 25px; /* ACA -- if needed, should be in "em" */
+}
+
+
+/* -- quotes and messages --------------------------------------------------- */
+
+.system-message {
+	background-color: #f2f2a6;
+	padding: 0.25em 0.25rem 0.25em 0.25rem;
+	border: 3px solid red;
+}
+
+.line-block {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.line-block .line-block {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: 1.5em;
+}
+
+blockquote {
+	font-family: "Roboto Condensed", Ariel, Helvetica, sans-serif;
+	margin-left: 2em;
+	margin-right: 2em;
+	border-left: solid 1px #808080;
+	overflow: auto;
+	overflow-y: hidden;  /* fixes display issues on Chrome browsers */
+}
+
+blockquote.epigraph p:not(.attribution) {
+	font-style: oblique;
+}
+
+blockquote.pull-quote {
+        font-weight: bold;
+        font-style: oblique;
+        font-size: 2rem;
+        color: #a00000;
+        position: relative;
+}
+blockquote.pull-quote p {
+        display: block;
+        font-size: 1rem;
+        color: #222222;
+}
+blockquote.pull-quote p:not(.attribution) {
+        display: inline;
+        font-weight: bold;
+        font-style: oblique;
+        font-size: 2rem;
+        color: #a00000;
+}
+
+p.rubric {
+	color: #a00000;
+	margin-top: 2em;
+	font-weight: bold;
+}
+
+
+/* -- code displays --------------------------------------------------------- */
+
+pre {
+	margin-left: 2em;
+	margin-right: 2em;
+	border-left: solid 1px #808080;
+	overflow: auto;
+	overflow-y: hidden;  /* fixes display issues on Chrome browsers */
+	font-family: "Roboto Mono", monospace;
+}
+tt {
+	font-family: "Roboto Mono", monospace;
+}
+
+pre.address {
+	margin: 0 1rem 0 0;
+}
+
+
+/* -- tables ---------------------------------------------------------------- */
+
+.footnote-reference {
+	vertical-align: super;
+	font-size: 0.5em;
+	line-height: normal;
+}
+
+/* Docutils generates footnotes as a table, make borderless */
+table.footnote,
+table.footnote td,
+table.footnote th {
+	border: none;
+}
+
+table.citation {
+	border: none;
+	border-left: solid 1px #808080;
+	margin-left: 1px;
+}
+table.citation td {
+	border-bottom: none;
+}
+
+/* -- tables ---------------------------------------------------------------- */
+
+table.docutils {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	border: 0;
+	border-collapse: collapse;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+}
+
+table.docutils th {
+	padding: 1px 0.5rem 1px 0.5rem;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid #cccccc;
+}
+table.docutils td {
+	padding: 1px 0.5rem 1px 0.5rem;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 1px solid #e4e4e4;
+}
+
+/* Ensure there are no borders for the Docutils-generated tables */
+table.field-list,
+table.field-list td,
+table.field-list th {
+	border: 0 !important;
+}
+/* ... and Docutils generates footnotes as a table */
+/* but since we border the notes, we don't set "none" for the outer table */
+table.footnote td,
+table.footnote th {
+        border: none;
+}
+
+table.citation td {
+	border-bottom: none;
+}
+
+th {
+	text-align: left;
+	padding-right: 5px;
+}
+
+
+/* -- headings -------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+	color: #a00000;
+}
+h1 {
+	font-size: 2rem;
+	padding-top: 1em;
+}
+h2 {
+	font-size: 1.5rem;
+	padding-top: 1em;
+}
+h3 {
+	font-size: 1.25rem;
+	padding-top: 1em;
+}
+h4 {
+	font-size: 1.0rem;
+	padding-top: 1em;
+}
+h5 {
+	font-size: 0.875rem;
+	padding-top: 1em;
+}
+h6 {
+	font-size: 0.75rem;
+}
+
+
+/* -- other body styles ----------------------------------------------------- */
+
+div.body p.caption {
+	text-align: inherit;
+}
+
+div.body td {
+	text-align: left;
+}
+
+.field-list ul {
+	padding-left: 1rem;
+}
+
+.first {
+	/* uncomment to force first elements to not have a top margin ...
+	margin-top: 0 !important;
+	... */
+}
+
+ol.arabic {
+	list-style: decimal;
+}
+
+ol.loweralpha {
+	list-style: lower-alpha;
+}
+
+ol.upperalpha {
+	list-style: upper-alpha;
+}
+
+ol.lowerroman {
+	list-style: lower-roman;
+}
+
+ol.upperroman {
+	list-style: upper-roman;
+}
+
+dl {
+	margin-bottom: 1em;
+}
+
+dd p {
+	margin-top: 0px;
+}
+
+dd ul,
+dd table {
+	margin-bottom: 1em;
+}
+
+dd {
+	margin-top: 0.25em;
+	margin-bottom: 1em;
+	margin-left: 2rem;
+}
+
+dl.docutils dt {
+	font-weight: bold
+}
+
+dt:target,
+.highlighted {
+	background-color: #fbe54e;
+}
+
+dl.glossary dt {
+	font-weight: bold;
+	font-size: 1.125em;
+}
+
+.field-list ul {
+	margin: 0;
+	padding-left: 1em;
+}
+
+.field-list p {
+	margin: 0;
+}
+
+.optional {
+	font-size: 1.25em;
+}
+
+.versionmodified {
+	font-style: italic;
+}
+
+.accelerator {
+	text-decoration: underline;
+}
+
+.classifier {
+	font-style: oblique;
+}
+
+abbr,
+acronym {
+	border-bottom: dotted 1px;
+	cursor: help;
+}
+
+.newthought {
+	/* Hack at a Tufte effect, used for first few words of a chapter */
+	padding-top: 4em;
+	text-transform: uppercase;
+	font-size: smaller;
+}
+
+
+/*****************************************************************************/
+/* B-Side Header & Footer                                                    */
+
+header,
+footer {
+	font-family: "Roboto Condensed", Ariel, Helvetica, sans-serif;
+}
+header {
+	padding-top: 1rem;
+	padding-left: 5%;
+}
+
+header > div.top-title,
+header > div.top-author,
+header > div.top-date {
+	color: #a00000;
+}
+
+header > nav {
+	padding-top: 2em;
+}
+header > nav > ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+header > nav > ul > li {
+	float: left;
+	padding-right: 0rem;
+	letter-spacing: 0.125em;
+}
+header > nav::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+header > nav li > a:before {
+	content: "\0003c";
+	visibility: hidden;
+}
+header > nav li > a:after {
+	content: ">";
+	visibility: hidden;
+}
+header > nav li > a.active:before {
+	content: "\0003c";
+	visibility: visible;
+}
+header > nav li > a.active:after {
+	content: ">";
+	visibility: visible;
+}
+
+header > nav a:link,
+header > nav a:visited,
+footer a.link-transition {
+	/* unset the fancy underlining used in body text */
+	text-decoration: none;
+	background: none;
+	-webkit-background-size: auto auto;
+	-moz-background-size: auto auto;
+	background-size: auto auto;
+	background-repeat: repeat;
+	background-position: initial;
+	text-shadow: none;
+}
+header > nav a:link,
+header > nav a:visited {
+	color: #a00000;
+	font-size: 1.25rem;
+}
+header > nav a {
+	display: block;
+	vertical-align: baseline;
+	text-transform: uppercase;
+}
+footer a.link-transition {
+	text-transform: uppercase;
+	vertical-align: baseline;
+	padding: 0.125rem;
+}
+
+header > nav a img {
+	height: 5rem;
+	position: relative;
+	max-width: 100%;
+	top: -1.5rem;
+}
+
+
+
+/*****************************************************************************/
+/* B-Side Flourishes                                                         */
+
+
+/* -- Fancy underlining for links -------------------------------------------*/
+/*    (as opposed to simple blue-underlined text) */
+
+/* Seeking the effect of "text-decoration-skip: ink"
+ * Derived from https://github.com/adamschwartz/magic-of-css/commit/35fa2f5ab36aa8c81f053f5a8c7b67b60c79ae5b
+ * Covered more recently: https://css-tricks.com/styling-underlines-web/
+ */
+
+a:link, a:visited {
+	color: inherit;
+}
+
+a:link {
+	text-decoration: none;
+	background: -webkit-linear-gradient(#fefefe, #fefefe), -webkit-linear-gradient(#fefefe, #fefefe), -webkit-linear-gradient(#222222, #222222);
+	background: linear-gradient(#fefefe, #fefefe), linear-gradient(#fefefe, #fefefe), linear-gradient(#222222, #222222);
+	-webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+	-moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+	background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+	background-repeat: no-repeat, no-repeat, repeat-x;
+	background-position: 0% 93%, 100% 93%, 0% 93%;
+	/*
+	 * Note: degree of complexity of underline can be adjusted:
+	 * Original (offers clear whitespace around descenders)
+	 *	text-shadow: 0.03em 0 $bgcolor, -0.03em 0 $bgcolor, 0 0.03em $bgcolor, 0 -0.03em $bgcolor, 0.06em 0 $bgcolor, -0.06em 0 $bgcolor, 0.09em 0 $bgcolor, -0.09em 0 $bgcolor, 0.12em 0 $bgcolor, -0.12em 0 $bgcolor, 0.15em 0 $bgcolor, -0.15em 0 $bgcolor;
+	 * Simplification (minimal whitespace around descenders)
+	 * as used by http://adrianroselli.com/2016/06/on-link-underlines.html
+	 *	text-shadow: .07em 0 0 $bgcolor,-.07em 0 0 $bgcolor,0 .05em 0 $bgcolor;
+	 */
+	text-shadow: 0.03em 0 #fefefe, -0.03em 0 #fefefe, 0 0.03em #fefefe, 0 -0.03em #fefefe, 0.06em 0 #fefefe, -0.06em 0 #fefefe, 0.09em 0 #fefefe, -0.09em 0 #fefefe, 0.12em 0 #fefefe, -0.12em 0 #fefefe, 0.15em 0 #fefefe, -0.15em 0 #fefefe;
+}
+
+
+/* Drop out the underline when the text is selected */
+a:link::selection {
+	background: #b4d5fe;
+	text-shadow: none;
+}
+
+a:link::-moz-selection {
+	background: #b4d5fe;
+	text-shadow: none;
+}
+
+/* Do not underline the links that are in H1 to H6 elements */
+h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link, h6 a:link {
+	background: #fefefe;
+}
+/* Do not underline the links that are in images */
+a.image-reference {
+	background: #fefefe;
+}
+
+
+/* -- Horizontal lines use gradients ---------------------------------------- */
+
+hr.docutils {
+	border: 0;
+	height: 1px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+	background-image: -moz-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+	background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+	background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+}
+
+
+/* -- Code Syntax Highlighting ----------------------------------------------*/
+
+/* formats for <PRE class="code"> */
+
+/* lovelace */
+.code  { background: #ffffff; } /*  */
+.code .comment { color: #888888; font-style: italic } /* .c */
+.code .comment.hashbang { color: #287088; font-style: italic } /* .ch */
+.code .comment.multiline { color: #888888; font-style: italic } /* .cm */
+.code .comment.preproc { color: #289870 } /* .cp */
+.code .comment.preprocfile { color: #888888; font-style: italic } /* .cpf */
+.code .comment.single { color: #888888; font-style: italic } /* .c1 */
+.code .comment.special { color: #888888; font-style: italic } /* .cs */
+.code .error { background-color: #a848a8 } /* .err */
+.code .generic.deleted { color: #c02828 } /* .gd */
+.code .generic.emph { font-style: italic } /* .ge */
+.code .generic.error { color: #c02828 } /* .gr */
+.code .generic.heading { color: #666666 } /* .gh */
+.code .generic.inserted { color: #388038 } /* .gi */
+.code .generic.output { color: #666666 } /* .go */
+.code .generic.prompt { color: #444444 } /* .gp */
+.code .generic.strong { font-weight: bold } /* .gs */
+.code .generic.subheading { color: #444444 } /* .gu */
+.code .generic.traceback { color: #2838b0 } /* .gt */
+.code .highlight { background-color: #ffffcc } /* .hll */
+.code .keyword { color: #2838b0 } /* .k */
+.code .keyword.constant { color: #444444; font-style: italic } /* .kc */
+.code .keyword.declaration { color: #2838b0; font-style: italic } /* .kd */
+.code .keyword.namespace { color: #2838b0 } /* .kn */
+.code .keyword.pseudo { color: #2838b0 } /* .kp */
+.code .keyword.reserved { color: #2838b0 } /* .kr */
+.code .keyword.type { color: #2838b0; font-style: italic } /* .kt */
+.code .literal.number.bin { color: #444444 } /* .mb */
+.code .literal.number { color: #444444 } /* .m */
+.code .literal.number.float { color: #444444 } /* .mf */
+.code .literal.number.hex { color: #444444 } /* .mh */
+.code .literal.number.integer { color: #444444 } /* .mi */
+.code .literal.number.integer.long { color: #444444 } /* .il */
+.code .literal.number.oct { color: #444444 } /* .mo */
+.code .literal.string.affix { color: #444444 } /* .sa */
+.code .literal.string.backtick { color: #b83838 } /* .sb */
+.code .literal.string.char { color: #a848a8 } /* .sc */
+.code .literal.string { color: #b83838 } /* .s */
+.code .literal.string.delimiter { color: #b85820 } /* .dl */
+.code .literal.string.doc { color: #b85820; font-style: italic } /* .sd */
+.code .literal.string.double { color: #b83838 } /* .s2 */
+.code .literal.string.escape { color: #709030 } /* .se */
+.code .literal.string.heredoc { color: #b83838 } /* .sh */
+
+
+/* -- Code Syntax Highlighting ----------------------------------------------*/
+
+/* formats for <PRE class="code"> */
+
+/* lovelace */
+.code  { background: #ffffff; } /*  */
+.code .comment { color: #888888; font-style: italic } /* .c */
+.code .comment.hashbang { color: #287088; font-style: italic } /* .ch */
+.code .comment.multiline { color: #888888; font-style: italic } /* .cm */
+.code .comment.preproc { color: #289870 } /* .cp */
+.code .comment.preprocfile { color: #888888; font-style: italic } /* .cpf */
+.code .comment.single { color: #888888; font-style: italic } /* .c1 */
+.code .comment.special { color: #888888; font-style: italic } /* .cs */
+.code .error { background-color: #a848a8 } /* .err */
+.code .generic.deleted { color: #c02828 } /* .gd */
+.code .generic.emph { font-style: italic } /* .ge */
+.code .generic.error { color: #c02828 } /* .gr */
+.code .generic.heading { color: #666666 } /* .gh */
+.code .generic.inserted { color: #388038 } /* .gi */
+.code .generic.output { color: #666666 } /* .go */
+.code .generic.prompt { color: #444444 } /* .gp */
+.code .generic.strong { font-weight: bold } /* .gs */
+.code .generic.subheading { color: #444444 } /* .gu */
+.code .generic.traceback { color: #2838b0 } /* .gt */
+.code .highlight { background-color: #ffffcc } /* .hll */
+.code .keyword { color: #2838b0 } /* .k */
+.code .keyword.constant { color: #444444; font-style: italic } /* .kc */
+.code .keyword.declaration { color: #2838b0; font-style: italic } /* .kd */
+.code .keyword.namespace { color: #2838b0 } /* .kn */
+.code .keyword.pseudo { color: #2838b0 } /* .kp */
+.code .keyword.reserved { color: #2838b0 } /* .kr */
+.code .keyword.type { color: #2838b0; font-style: italic } /* .kt */
+.code .literal.number.bin { color: #444444 } /* .mb */
+.code .literal.number { color: #444444 } /* .m */
+.code .literal.number.float { color: #444444 } /* .mf */
+.code .literal.number.hex { color: #444444 } /* .mh */
+.code .literal.number.integer { color: #444444 } /* .mi */
+.code .literal.number.integer.long { color: #444444 } /* .il */
+.code .literal.number.oct { color: #444444 } /* .mo */
+.code .literal.string.affix { color: #444444 } /* .sa */
+.code .literal.string.backtick { color: #b83838 } /* .sb */
+.code .literal.string.char { color: #a848a8 } /* .sc */
+.code .literal.string { color: #b83838 } /* .s */
+.code .literal.string.delimiter { color: #b85820 } /* .dl */
+.code .literal.string.doc { color: #b85820; font-style: italic } /* .sd */
+.code .literal.string.double { color: #b83838 } /* .s2 */
+.code .literal.string.escape { color: #709030 } /* .se */
+.code .literal.string.heredoc { color: #b83838 } /* .sh */
+.code .literal.string.interpol { color: #b83838; text-decoration: underline } /* .si */
+.code .literal.string.other { color: #a848a8 } /* .sx */
+.code .literal.string.regex { color: #a848a8 } /* .sr */
+.code .literal.string.single { color: #b83838 } /* .s1 */
+.code .literal.string.symbol { color: #b83838 } /* .ss */
+.code .name.attribute { color: #388038 } /* .na */
+.code .name.builtin { color: #388038 } /* .nb */
+.code .name.builtin.pseudo { color: #388038; font-style: italic } /* .bp */
+.code .name.class { color: #287088 } /* .nc */
+.code .name.constant { color: #b85820 } /* .no */
+.code .name.decorator { color: #287088 } /* .nd */
+.code .name.entity { color: #709030 } /* .ni */
+.code .name.exception { color: #908828 } /* .ne */
+.code .name.function { color: #785840 } /* .nf */
+.code .name.function.magic { color: #b85820 } /* .fm */
+.code .name.label { color: #289870 } /* .nl */
+.code .name.namespace { color: #289870 } /* .nn */
+.code .name.tag { color: #2838b0 } /* .nt */
+.code .name.variable.class { color: #b04040 } /* .vc */
+.code .name.variable { color: #b04040 } /* .nv */
+.code .name.variable.global { color: #908828 } /* .vg */
+.code .name.variable.instance { color: #b04040 } /* .vi */
+.code .name.variable.magic { color: #b85820 } /* .vm */
+.code .operator { color: #666666 } /* .o */
+.code .operator.word { color: #a848a8 } /* .ow */
+.code .punctuation { color: #888888 } /* .p */
+.code .text.whitespace { color: #a89028 } /* .w */
+
+
+/* Formats for <CODE> elements (inline) */
+
+/* lovelace */
+code  { background: #ffffff; } /*  */
+code .comment { color: #888888; font-style: italic } /* .c */
+code .comment.hashbang { color: #287088; font-style: italic } /* .ch */
+code .comment.multiline { color: #888888; font-style: italic } /* .cm */
+code .comment.preproc { color: #289870 } /* .cp */
+code .comment.preprocfile { color: #888888; font-style: italic } /* .cpf */
+code .comment.single { color: #888888; font-style: italic } /* .c1 */
+code .comment.special { color: #888888; font-style: italic } /* .cs */
+code .error { background-color: #a848a8 } /* .err */
+code .generic.deleted { color: #c02828 } /* .gd */
+code .generic.emph { font-style: italic } /* .ge */
+code .generic.error { color: #c02828 } /* .gr */
+code .generic.heading { color: #666666 } /* .gh */
+code .generic.inserted { color: #388038 } /* .gi */
+code .generic.output { color: #666666 } /* .go */
+code .generic.prompt { color: #444444 } /* .gp */
+code .generic.strong { font-weight: bold } /* .gs */
+code .generic.subheading { color: #444444 } /* .gu */
+code .generic.traceback { color: #2838b0 } /* .gt */
+code .highlight { background-color: #ffffcc } /* .hll */
+code .keyword { color: #2838b0 } /* .k */
+code .keyword.constant { color: #444444; font-style: italic } /* .kc */
+code .keyword.declaration { color: #2838b0; font-style: italic } /* .kd */
+code .keyword.namespace { color: #2838b0 } /* .kn */
+code .keyword.pseudo { color: #2838b0 } /* .kp */
+code .keyword.reserved { color: #2838b0 } /* .kr */
+code .keyword.type { color: #2838b0; font-style: italic } /* .kt */
+code .literal.number.bin { color: #444444 } /* .mb */
+code .literal.number { color: #444444 } /* .m */
+code .literal.number.float { color: #444444 } /* .mf */
+code .literal.number.hex { color: #444444 } /* .mh */
+code .literal.number.integer { color: #444444 } /* .mi */
+code .literal.number.integer.long { color: #444444 } /* .il */
+code .literal.number.oct { color: #444444 } /* .mo */
+code .literal.string.affix { color: #444444 } /* .sa */
+code .literal.string.backtick { color: #b83838 } /* .sb */
+code .literal.string.char { color: #a848a8 } /* .sc */
+code .literal.string { color: #b83838 } /* .s */
+code .literal.string.delimiter { color: #b85820 } /* .dl */
+code .literal.string.doc { color: #b85820; font-style: italic } /* .sd */
+code .literal.string.double { color: #b83838 } /* .s2 */
+code .literal.string.escape { color: #709030 } /* .se */
+code .literal.string.heredoc { color: #b83838 } /* .sh */
+code .literal.string.interpol { color: #b83838; text-decoration: underline } /* .si */
+code .literal.string.other { color: #a848a8 } /* .sx */
+code .literal.string.regex { color: #a848a8 } /* .sr */
+code .literal.string.single { color: #b83838 } /* .s1 */
+code .literal.string.symbol { color: #b83838 } /* .ss */
+code .name.attribute { color: #388038 } /* .na */
+code .name.builtin { color: #388038 } /* .nb */
+code .name.builtin.pseudo { color: #388038; font-style: italic } /* .bp */
+code .name.class { color: #287088 } /* .nc */
+code .name.constant { color: #b85820 } /* .no */
+code .name.decorator { color: #287088 } /* .nd */
+code .name.entity { color: #709030 } /* .ni */
+code .name.exception { color: #908828 } /* .ne */
+code .name.function { color: #785840 } /* .nf */
+code .name.function.magic { color: #b85820 } /* .fm */
+code .name.label { color: #289870 } /* .nl */
+code .name.namespace { color: #289870 } /* .nn */
+code .name.tag { color: #2838b0 } /* .nt */
+code .name.variable.class { color: #b04040 } /* .vc */
+code .name.variable { color: #b04040 } /* .nv */
+code .name.variable.global { color: #908828 } /* .vg */
+code .name.variable.instance { color: #b04040 } /* .vi */
+code .name.variable.magic { color: #b85820 } /* .vm */
+code .operator { color: #666666 } /* .o */
+code .operator.word { color: #a848a8 } /* .ow */
+code .punctuation { color: #888888 } /* .p */
+code .text.whitespace { color: #a89028 } /* .w */
+

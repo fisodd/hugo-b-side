@@ -1,0 +1,87 @@
+/* B-side 'wide' scheme
+ * - For documents written with inline asides (sidenotes and footnotes)
+ * -- expects markup based on Docutils (reStructuredText, not Markdown)
+ *
+ * Adds some 'classes' to reStructuredText directives
+ * 'sidenote' -- tables, topics are fit into right-side margin
+ * 'titleless' -- sidenotes are displayed without titles
+ * 'fullwidth' -- tables, topics go across full width of page
+ * 'rising' -- sidenotes positioned upwards of insertion point
+ */
+
+/* ToDo:
+ */
+
+
+
+/****************************************************************************/
+/* Asides */
+
+table.footnote {
+	float: right;
+	clear: both;
+	width: 50%;
+	text-align: right;
+
+	border-right: solid 1px #808080;
+	border-left: none;
+	border-top: none;
+	border-bottom: none;
+}
+div.sidebar {
+	float: right;
+	clear: both;
+	width: 40%;
+	position: relative;
+	text-align: right;
+
+	background: #fefefe;
+	border-right: solid 1px #808080;
+	border-left: none;
+	border-top: none;
+	border-bottom: none;
+}
+
+
+
+
+/****************************************************************************/
+/*
+ * Be responsive...
+ * -- these settings override 'mobile' values with a 'desktop' alternative
+ */
+/****************************************************************************/
+
+
+/*
+ * if too narrow, then transform fullwidth (wider) tables into long columns
+ */
+@media (max-width: 899px) {
+
+	table.fullwidth thead,
+	table.fullwidth tbody,
+	table.fullwidth th,
+	table.fullwidth td,
+	table.fullwidth tr {
+		display: block;
+	}
+	table.fullwidth tr {
+		border-bottom: 1px solid #cccccc;
+		/* markup includes colgroup widths...
+		 * we are forced to override preset widths */
+		width: 300px;
+		width: 90vw;
+	}
+	table.fullwidth th {
+		text-align: left;
+		border-bottom: 1px solid #eeeeee;
+	}
+	table.fullwidth td {
+		text-align: right;
+		border-bottom: 1px solid #eeeeee;
+		padding-left: 50%;
+	}
+	table.fullwidth {
+		border-bottom: none;
+	}
+}

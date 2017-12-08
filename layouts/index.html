@@ -1,0 +1,53 @@
+{{ define "main" }}
+  <section>
+    {{ .Content }}
+  </section>
+
+  {{/* Define a section to pull recent posts from. For Hugo 0.20 this will default to the section with the most number of pages. */}}
+  {{ $mainSections := .Site.Params.mainSections | default (slice "post") }}
+  {{/* Create a variable with that section to use in multiple places. */}}
+  {{ $section := where .Site.RegularPages "Section" "in" $mainSections }}
+  {{/* Check to see if the section is defined for ranging through it */}}
+  {{ $section_count := len $section }}
+  {{ if ge $section_count 1 }}
+    {{/* Derive the section name  */}}
+    {{ $section_name := index (.Site.Params.mainSections) 0 }}
+
+    <div>
+      {{/* Use $section_name to get the section title. Use "with" to only show it if it exists */}}
+       {{ with .Site.GetPage "section" $section_name }}
+          <h1>Recent Activity in {{ .Title }}</h1>
+        {{ end }}
+
+        {{/* Range through the first three items of the section */}}
+        {{ range (first 3 $section) }}
+            {{ .Render "summary" }}
+        {{ end }}
+
+    {{ if ge $section_count 4 }}
+       <hr class="docutils">
+       {{ with .Site.GetPage "section" $section_name }}
+         <h2>More from {{ .Title }}</h2>
+        {{ end }}
+
+        {{/* Now, range through the next four after the initial 3 items. Nest the requirements, "after" then "first" on the outside */}}
+	<ul>
+        {{ range (first 4 (after 3 $section))  }}
+          <li> <a href="{{ .URL }}"> {{ .Title }} </a></li>
+        {{ end }}
+	</ul>
+
+        {{/* As above, Use $section_name to get the section title, and URL. Use "with" to only show it if it exists */}}
+        {{ with .Site.GetPage "section" $section_name }}
+	<ul>
+	  <li><a href="{{ .URL }}">All {{.Title }}</a></li>
+	</ul>
+        {{ end }}
+      {{ end }}
+
+      </div>
+  {{ end }}
+
+
+
+{{ end }}
