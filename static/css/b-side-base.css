@@ -5,9 +5,8 @@
 
 /*****************************************************************************/
 /* Colors:
- * foreground: #222222
- * background: #fefefe
- * ??? #fffff6 -- from Edward Morbius (for a very warm "white")
+ * foreground: #111111
+ * background: #fffff6 -- from Edward Morbius (for a very warm "white")
  * selection color: #b4d5fe -- straight from Adam Schwartz's "Smarter Link"
  * Borders: #ddb #ccc (use #cccccc, and #eeeeee maybe #e4e4e4)
  * Yellow highlight: #f2f2a6 (yellow, 75% saturation, 80% lightness)
@@ -26,8 +25,8 @@
 
 body {
 	font-family: "Roboto", Ariel, Helvetica, sans-serif;
-	background-color: #fefefe;
-	color: #222222;
+	background-color: #fffff6;
+	color: #111111;
 }
 
 
@@ -263,7 +262,7 @@ blockquote.pull-quote {
 blockquote.pull-quote p {
         display: block;
         font-size: 1rem;
-        color: #222222;
+        color: #111111;
 }
 blockquote.pull-quote p:not(.attribution) {
         display: inline;
@@ -630,8 +629,8 @@ a:link, a:visited {
 
 a:link {
 	text-decoration: none;
-	background: -webkit-linear-gradient(#fefefe, #fefefe), -webkit-linear-gradient(#fefefe, #fefefe), -webkit-linear-gradient(#222222, #222222);
-	background: linear-gradient(#fefefe, #fefefe), linear-gradient(#fefefe, #fefefe), linear-gradient(#222222, #222222);
+	background: -webkit-linear-gradient(#fffff6, #fffff6), -webkit-linear-gradient(#fffff6, #fffff6), -webkit-linear-gradient(#111111, #111111);
+	background: linear-gradient(#fffff6, #fffff6), linear-gradient(#fffff6, #fffff6), linear-gradient(#111111, #111111);
 	-webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
 	-moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
 	background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
@@ -645,7 +644,7 @@ a:link {
 	 * as used by http://adrianroselli.com/2016/06/on-link-underlines.html
 	 *	text-shadow: .07em 0 0 $bgcolor,-.07em 0 0 $bgcolor,0 .05em 0 $bgcolor;
 	 */
-	text-shadow: 0.03em 0 #fefefe, -0.03em 0 #fefefe, 0 0.03em #fefefe, 0 -0.03em #fefefe, 0.06em 0 #fefefe, -0.06em 0 #fefefe, 0.09em 0 #fefefe, -0.09em 0 #fefefe, 0.12em 0 #fefefe, -0.12em 0 #fefefe, 0.15em 0 #fefefe, -0.15em 0 #fefefe;
+	text-shadow: 0.03em 0 #fffff6, -0.03em 0 #fffff6, 0 0.03em #fffff6, 0 -0.03em #fffff6, 0.06em 0 #fffff6, -0.06em 0 #fffff6, 0.09em 0 #fffff6, -0.09em 0 #fffff6, 0.12em 0 #fffff6, -0.12em 0 #fffff6, 0.15em 0 #fffff6, -0.15em 0 #fffff6;
 }
 
 
@@ -662,11 +661,11 @@ a:link::-moz-selection {
 
 /* Do not underline the links that are in H1 to H6 elements */
 h1 a:link, h2 a:link, h3 a:link, h4 a:link, h5 a:link, h6 a:link {
-	background: #fefefe;
+	background: #fffff6;
 }
 /* Do not underline the links that are in images */
 a.image-reference {
-	background: #fefefe;
+	background: #fffff6;
 }
 
 
