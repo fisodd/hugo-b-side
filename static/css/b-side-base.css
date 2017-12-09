@@ -251,6 +251,9 @@ blockquote {
 blockquote.epigraph p:not(.attribution) {
 	font-style: oblique;
 }
+blockquote.epigraph p.attribution {
+	text-align: right;
+}
 
 blockquote.pull-quote {
         font-weight: bold;
@@ -522,6 +525,17 @@ acronym {
 /*****************************************************************************/
 /* B-Side Header & Footer                                                    */
 
+/* -- article header --------------------------------------------------------*/
+
+header > div.top-title,
+header > div.top-author,
+header > div.top-date {
+	color: #a00000;
+}
+
+
+/* -- page header/footer ----------------------------------------------------*/
+
 header,
 footer {
 	font-family: "Roboto Condensed", Ariel, Helvetica, sans-serif;
@@ -529,12 +543,11 @@ footer {
 header {
 	padding-top: 1rem;
 	padding-left: 5%;
+	padding-right: 5%;
 }
 
-header > div.top-title,
-header > div.top-author,
-header > div.top-date {
-	color: #a00000;
+footer {
+	clear: both;
 }
 
 header > nav {
