@@ -248,11 +248,11 @@ blockquote {
 	overflow-y: hidden;  /* fixes display issues on Chrome browsers */
 }
 
+blockquote p.attribution {
+	text-align: right;
+}
 blockquote.epigraph p:not(.attribution) {
 	font-style: oblique;
-}
-blockquote.epigraph p.attribution {
-	text-align: right;
 }
 
 blockquote.pull-quote {
