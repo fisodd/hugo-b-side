@@ -1,9 +1,8 @@
-{{ $dateFormat := default "Jan 2, 2006" (index .Site.Params "date_format") }}
-
+{{ $dateFormat := default "January 2, 2006" (index .Site.Params "date_format") }}
 <section>
   <p><hr class="docutils"></p>
   <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
-  <p><em><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>{{ .Date.Format $dateFormat }}</time> {{ if or (.Params.author) (default .Site.Params.author) }}by {{ .Params.author | default .Site.Params.author }}{{ end }}{{ if or (.Params.categories) (.Params.tags) }}, {{ partial "summ-terms.html" . }}{{ end }}</em></p>
+  <ul class="bulletless"><li><em><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>{{ .Date.Format $dateFormat }}</time> {{ if or (.Params.author) (default .Site.Params.author) }}by {{ .Params.author | default .Site.Params.author }}{{ end }}{{ if or (.Params.categories) (.Params.tags) }}, {{ partial "summ-terms.html" . }}{{ end }}</em></li></ul>
   <blockquote>
   {{ if isset .Params "description" }}
     <p><em>Description:</em> {{ .Params.description }}</p>
@@ -13,5 +12,3 @@
   </blockquote>
   <p><a href='{{ .Permalink }}'>Read ...</a></p>
 </section>
-
-

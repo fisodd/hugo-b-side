@@ -3,12 +3,10 @@
 <article>
   <ul class="bulletless">
     <li>
-      {{ with .Title }}{{ . | markdownify }}, 
-      {{ end }}
-      {{ with .Params.author }}{{ . }}, 
-      {{ end }}
+      {{ with .Title }}{{ . | markdownify }}, {{ end }}
+      {{ with .Params.author }}{{ . }}, {{ end }}
       <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format $dateFormat }}</time>
-      <p><hr class="docutils"></p>
+      <hr class="docutils">
     </li>
   </ul>
   <section>

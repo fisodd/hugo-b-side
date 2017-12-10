@@ -2,26 +2,28 @@
 <header>
   <nav>
     <ul>
-  {{ if $badge_image }}
-    {{ $badge_image := (trim $badge_image "/") | absURL }}
-    <li>
-    <a href="{{ .Site.BaseURL }}"><img class="badge" src="{{ $badge_image }}" alt="{{ .Site.Title }}"></a>
-    </li>
-  {{ end }}
-      <li>
-        <a href="{{ .Site.BaseURL }}"{{ if .IsHome }} class="active"{{ end }}>
-          {{ .Site.Title }}
-        </a>
-	{{ $currentNode := . }}
-        {{ if .Site.Menus.main }}
-          {{ range .Site.Menus.main }}
-	  <li>
-            <a href="{{ .URL }}" title="{{ .Name }} page"{{ if $currentNode.IsMenuCurrent "main" . }} class="active"{{ end }}>
-              {{ .Name }}
-            </a>
+      {{ if $badge_image }}
+        {{ $badge_image := (trim $badge_image "/") | absURL }}
+          <li>
+            <a href="{{ .Site.BaseURL }}"><img class="badge" src="{{ $badge_image }}" alt="{{ .Site.Title }}"></a>
           </li>
-          {{ end }}
         {{ end }}
-      </ul>
+        <li>
+          <a href="{{ .Site.BaseURL }}"{{ if .IsHome }} class="active"{{ end }}>
+            {{ .Site.Title }}
+          </a>
+          {{ $currentNode := . }}
+          {{ if .Site.Menus.main }}
+            {{ range .Site.Menus.main }}
+              <li>
+                <a href="{{ .URL }}" title="{{ .Name }} page"{{ if $currentNode.IsMenuCurrent "main" . }} class="active"{{ end }}>
+                  {{ .Name }}
+                </a>
+              </li>
+            {{ end }}
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
   </nav>
 </header>
