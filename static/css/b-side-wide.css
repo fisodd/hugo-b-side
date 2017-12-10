@@ -1,17 +1,7 @@
 /* B-side 'wide' scheme
  * - For documents written with inline asides (sidenotes and footnotes)
  * -- expects markup based on Docutils (reStructuredText, not Markdown)
- *
- * Adds some 'classes' to reStructuredText directives
- * 'sidenote' -- tables, topics are fit into right-side margin
- * 'titleless' -- sidenotes are displayed without titles
- * 'fullwidth' -- tables, topics go across full width of page
- * 'rising' -- sidenotes positioned upwards of insertion point
  */
-
-/* ToDo:
- */
-
 
 
 /****************************************************************************/

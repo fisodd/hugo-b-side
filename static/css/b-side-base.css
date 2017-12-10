@@ -527,10 +527,8 @@ acronym {
 
 /* -- article header --------------------------------------------------------*/
 
-header > div.top-title,
-header > div.top-author,
-header > div.top-date {
-	color: #a00000;
+ul.bulletless {
+	list-style-type: none;
 }
 
 
