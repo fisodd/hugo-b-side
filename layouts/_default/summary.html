@@ -1,5 +1,5 @@
 {{ $dateFormat := default "January 2, 2006" (index .Site.Params "date_format") }}
-<section>
+<div class="bside-summary">
   <p><hr class="docutils"></p>
   <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
   <ul class="bulletless">
@@ -10,4 +10,4 @@
     <li>&nbsp;</li>
     <li><a href='{{ .Permalink }}'>Read more ...</a></li>
   </ul>
-</section>
+</div>
