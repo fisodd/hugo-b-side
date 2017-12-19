@@ -515,10 +515,9 @@ acronym {
 }
 
 .newthought {
-	/* Hack at a Tufte effect, used for first few words of a chapter */
+	/* Hack at a Tufte effect, used for first few words of a section */
 	padding-top: 4em;
-	text-transform: uppercase;
-	font-size: smaller;
+	font-variant: small-caps;
 }
 
 
