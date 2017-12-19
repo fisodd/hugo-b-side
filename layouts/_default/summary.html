@@ -2,13 +2,12 @@
 <section>
   <p><hr class="docutils"></p>
   <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
-  <ul class="bulletless"><li><em><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>{{ .Date.Format $dateFormat }}</time> {{ if or (.Params.author) (default .Site.Params.author) }}by {{ .Params.author | default .Site.Params.author }}{{ end }}{{ if or (.Params.categories) (.Params.tags) }}, {{ partial "summ-terms.html" . }}{{ end }}</em></li></ul>
-  <blockquote>
-  {{ if isset .Params "description" }}
-    <p><em>Description:</em> {{ .Params.description }}</p>
-  {{ else }}
-    <p><em>Extract:</em> {{ .Summary }}{{ if .Truncated }} [...]{{ end }}</p>
-  {{ end }}
-  </blockquote>
-  <p><a href='{{ .Permalink }}'>Read ...</a></p>
+  <ul class="bulletless">
+    {{ if isset .Params "description" }}
+      <li>{{ .Params.description }}</li>
+    {{ end }}
+    <li><em><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>{{ .Date.Format $dateFormat }}</time> {{ if or (.Params.author) (default .Site.Params.author) }}by {{ .Params.author | default .Site.Params.author }}{{ end }}{{ if or (.Params.categories) (.Params.tags) }}, {{ partial "summ-terms.html" . }}{{ end }}</em></li>
+    <li>&nbsp;</li>
+    <li><a href='{{ .Permalink }}'>Read more ...</a></li>
+  </ul>
 </section>
