@@ -1,12 +1,12 @@
 {{ define "main" }}
-  <section>
-    <div>
+  <section class="list-content">
+    <div class="list-content">
       {{ .Content }}
     </div>
   </section>
-  <section>
-    {{ range .Data.Pages }}
+  <section class="list-summaries">
+    {{ range .Data.Pages -}}
       {{ .Render "summary" }}
-    {{ end }}
+    {{- end -}}
   </section>
 {{ end }}

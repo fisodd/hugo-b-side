@@ -1,11 +1,11 @@
-{{ $dateFormat := default "January 2, 2006" (index .Site.Params "date_format") }}
+{{- $dateFormat := default "January 2, 2006" (index .Site.Params "date_format") -}}
 <div class="bside-summary">
-  <p><hr class="docutils"></p>
+  <hr class="docutils">
   <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
   <ul class="bulletless">
-    {{ if isset .Params "description" }}
+    {{ if isset .Params "description" -}}
       <li>{{ .Params.description }}</li>
-    {{ end }}
+    {{- end }}
     <li><em><time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>{{ .Date.Format $dateFormat }}</time> {{ if or (.Params.author) (default .Site.Params.author) }}by {{ .Params.author | default .Site.Params.author }}{{ end }}{{ if or (.Params.categories) (.Params.tags) }}, {{ partial "summ-terms.html" . }}{{ end }}</em></li>
     <li>&nbsp;</li>
     <li><a href='{{ .Permalink }}'>Read more ...</a></li>
