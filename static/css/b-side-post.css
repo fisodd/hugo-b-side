@@ -183,7 +183,7 @@ img {
 	div.section > div.figure > img.fullwidth,
 	div.document > div.figure > img.fullwidth {
 		/* using 'vw', need to remember "padding-left: 10%" */
-		max-width: 88vw;
+		max-width: 87vw;
 	}
 
 
