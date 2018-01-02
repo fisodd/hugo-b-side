@@ -14,7 +14,6 @@
 
 /* ToDo:
  * -- Ugly: footnotes inside a list (desktop: note is trapped inside <ul>)
- * -- Oops: dropped support for 'sidenote' class (treat div like sidebar)
  */
 
 
@@ -68,10 +67,11 @@ img {
  */
 @media (min-width: 900px) {
 	/* fabricate a multi-column appearance
+	 * | left | main..main | sep | side |
 	 * left margin: 10%
 	 * main column: 55%
-	 * gutter: 5%
-	 * 2nd column: 30%
+	 * seperation gutter : 5%
+	 * sidebar column: 30%
 	 * right margin: 0%
 	 */
 
@@ -81,7 +81,8 @@ img {
 
 
 	/*
-	 * most basic content goes into left-most 2/3rds of display
+	 * most basic elements goes into left-most 2/3rds of display
+	 * -- note: pre is left unconstrained
 	 */
 	div > p,
 	div > dl,
@@ -89,62 +90,64 @@ img {
 	div > ul,
 	div > table,
 	div > blockquote {
+		/* Constrain width for direct descendants of a div */
 		width: 55%;
 	}
 
-	div.figure {
-		/* note: same width as the basic paragraph */
+
+	/*
+	 * Figures
+	 */
+	div.section > div.figure,
+	div.document > div.figure {
+		/* note: same width as the main column */
 		max-width: 55%;
 	}
-	div.figure > img {
-		max-width: 100%;
+	div.figure > * {
+		width: auto;
 	}
-	div.sidebar > div.figure {
-		max-width: 90%;
-	}
+
 
 
 	/*
-	 * Support a 'fullwidth' class override
+	 * Topics: by default act like 'fullwidth', can take 'sidebar' opt
 	 */
-	p.fullwidth {
+	div.section > div.topic,
+	div.document > div.topic {
 		width: 90%;
 	}
-
-	div.fullwidth,
-	table.fullwidth {
-		width: 90%;
-	}
-	div.section > div.figure > img.fullwidth {
-		max-width: 80vw;
-	}
-
-
-	/*
-	 * Topics: left side, but don't re-subdivide
-	 */
-	div.topic {
-		width: 55%;
-	}
-	div.topic > p,
-	div.topic > dl,
-	div.topic > ol,
-	div.topic > ul,
-	div.topic > table {
-		width: 100%;
-	}
-	div.topic p {
-		/* ensure that a paragraph in a topic uses topics full width*/
+	div.topic > * {
+		/* ensure that elements in a topic uses topics full width */
 		width: auto;
 	}
 
 
 	/*
-	 * Sidebars and footnotes: move  over to right edge
+	 * Admonitions: push to sidebar space
 	 */
-	div.sidebar,
+	div.admonition {
+		position: relative;
+		float: right;
+		clear: right;
+		width: 30%;
+
+		text-align: left;
+		line-height: 1.25;
+	}
+	div.admonition > * {
+		width: auto;
+		font-size: 1rem;
+	}
+
+
+	/*
+	 * Sidebars and footnotes: move over to right edge
+	 */
+	div.section > div.sidebar,
+	div.document > div.sidebar,
+	blockquote.sidebar,
 	table.footnote {
-		/* push the footnote and asidess to the right */
+		/* push the footnote and asides to the right */
 		position: relative;
 		float: right;
 		clear: right;
@@ -154,31 +157,35 @@ img {
 		line-height: 1.25;
 		text-align: left;
 		border: none;
+
+		/* drop any left/right margins */
+		margin-left: 0;
+		margin-right: 0;
 	}
-	div.sidebar img {
-		/* images in a sidebar should use 100% of sidebar */
-		max-width: 90%;
+	div.sidebar > * {
+		/* once inside a sidebar, use the whole width */
+		width: auto;
 	}
 
+
 	/*
-	 * Admonitions: center across whole width
+	 * Support a 'fullwidth' class option
 	 */
-	div.admonition {
-		position: relative;
-		float: right;
-		clear: right;
-		width: 30%;
-		text-align: left;
+	p.fullwidth,
+	div.fullwidth,
+	table.fullwidth {
+		width: 90%;
 	}
-	div.admonition > p,
-	div.admonition > dl,
-	div.admonition > ol,
-	div.admonition > ul,
-	div.admonition > table {
-		width: 100%;
-		font-size: 1rem;
-		line-height: 1.25;
+        blockquote.fullwidth {
+		/* blockquotes have a left indent, so a bit more narrow */
+		width: 80%;
 	}
+	div.section > div.figure > img.fullwidth,
+	div.document > div.figure > img.fullwidth {
+		/* using 'vw', need to remember "padding-left: 10%" */
+		max-width: 88vw;
+	}
+
 
 	/* Added 'rising' class to sidebar directive: upwards from mark */
 	div.rising.sidebar {
@@ -189,17 +196,36 @@ img {
 
 
 /*
- * if too narrow, then transform fullwidth (wider) tables into long columns
+ * if too narrow, then transform some types into alternative displays
  */
 @media (max-width: 899px) {
 
+	/* transform wide lists into skinnier layouts */
+	ul.responsive,
+	ul.responsive ul {
+		list-style-type: none;
+		padding-left: 1em;
+	}
+
+	/* sidebar flushes right, lists indentation would be wasted... */
+	div.sidebar ul {
+		padding-left: 0;
+	}
+
+	/* transform fullwidth (wider) tables into long columns */
+	table.responsive thead,
 	table.fullwidth thead,
+	table.responsive tbody,
 	table.fullwidth tbody,
+	table.responsive th,
 	table.fullwidth th,
+	table.responsive td,
 	table.fullwidth td,
+	table.responsive tr,
 	table.fullwidth tr {
 		display: block;
 	}
+	table.responsive tr,
 	table.fullwidth tr {
 		border-bottom: 1px solid #cccccc;
 		/* markup includes colgroup widths...
@@ -207,16 +233,26 @@ img {
 		width: 300px;
 		width: 90vw;
 	}
+	table.responsive th,
 	table.fullwidth th {
 		text-align: left;
 		border-bottom: 1px solid #eeeeee;
 	}
+	table.responsive td,
 	table.fullwidth td {
 		text-align: right;
 		border-bottom: 1px solid #eeeeee;
 		padding-left: 50%;
 	}
+	table.responsive,
 	table.fullwidth {
 		border-bottom: none;
+	}
+
+	div.sidebar table.docutils {
+		/* in sidebars, push tables over to the right */
+		width: auto;
+		margin-right: 0px;
+		margin-left: auto;
 	}
 }

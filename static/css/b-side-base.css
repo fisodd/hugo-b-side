@@ -19,7 +19,7 @@
 
 
 /*****************************************************************************/
-/* Very basic settings                                                       */
+/* Some basic settings                                                       */
 
 @charset "UTF-8";
 
@@ -30,52 +30,14 @@ body {
 }
 
 
-/*****************************************************************************/
-/* Simple 'responsive' behavior                                              */
-
-html {
-	font-size: 10px;
-	/* ACA: 8px might make the font scaling work better? */
-}
-
-@media (min-width: 400px) {
-	html {
-		font-size: 12px;
-	}
-}
-
-@media (min-width: 800px) {
-	html {
-		font-size: 16px;
-	}
-}
-
-@media (min-width: 900px) {
-	section {
-		padding-left: 10%;
-	}
-}
-
-@media (min-width: 1300px) {
-	section {
-		padding-left: 20%;
-	}
-}
-
 
 /*****************************************************************************/
-/* B-Side Basics                                                             */
+/* reStructuredText settings                                                 */
 
-/* Larger type for most stuff */
-:not(li) > p,
-div.section > ol.simple > li,
-div.section > ul.simple > li {
-	/* Note: "simple" UL/OL are the non-indented lists */
-	font-size: 1.5rem;
-	line-height: 1.5;
-}
 
-/* Keep type smaller for tightly formatted parts */
+/* -- Overall -------------------------------------------------------------- */
+
+/*ACA
 li p,
 dd p,
 table p,
@@ -88,13 +50,30 @@ div.figure p.caption {
 	font-size: 1rem;
 	line-height: 1.25;
 }
+ACA*/
+
+article {
+	line-height: 1.5;
+}
+
+dl.docutils,
+div.topic,
+div.legend,
+div.figure,
+div.sidebar,
+div.admonition,
+div.line-block,
+article > section pre,
+article > section table,
+article > section blockquote {
+        /* Certain elements are typeset densely, different from main text */
+        font-size: 0.75rem;
+        line-height: 1.25;
+}
 
 
-/*****************************************************************************/
-/* reStructuredText settings                                                 */
 
-
-/* -- special classes ------------------------------------------------------- */
+/* -- special classes ------------------------------------------------------ */
 
 img.align-left,
 .figure.align-left,
@@ -130,6 +109,14 @@ object.align-center {
 
 .align-right {
 	text-align: right;
+}
+
+div.narrow,
+blockquote.narrow {
+	margin: 0.5em 1rem 0.5em 0rem;
+	clear: left;
+	float: left;
+	width: 25%;
 }
 
 div.titleless p.topic-title,
@@ -251,23 +238,35 @@ blockquote {
 blockquote p.attribution {
 	text-align: right;
 }
-blockquote.epigraph p:not(.attribution) {
+blockquote.epigraph {
+	font-size: 1.125rem;
+	font-weight: 300;
 	font-style: oblique;
+	padding-left: 1em
+}
+blockquote.epigraph p.attribution {
+        font-size: 0.75rem;
+	font-weight: 400;
+	font-style: normal;
 }
 
 blockquote.pull-quote {
+	padding-top: 1em;
+	padding-left: 1em;
         font-weight: bold;
         font-style: oblique;
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: #a00000;
         position: relative;
 }
-blockquote.pull-quote p {
+blockquote.pull-quote p.attribution {
         display: block;
-        font-size: 1rem;
+	font-weight: normal;
+	font-style: normal;
+        font-size: 0.75rem;
         color: #111111;
 }
-blockquote.pull-quote p:not(.attribution) {
+blockquote.pull-quote p {
         display: inline;
         font-weight: bold;
         font-style: oblique;
@@ -306,6 +305,10 @@ pre.address {
 .footnote-reference {
 	vertical-align: super;
 	font-size: 0.5em;
+	line-height: normal;
+}
+.citation-reference {
+	font-size: 0.75em;
 	line-height: normal;
 }
 
@@ -382,31 +385,28 @@ h3,
 h4,
 h5,
 h6 {
+	margin-top: 0;
+	padding-top: 1em;
 	font-weight: bold;
 	color: #a00000;
 }
 h1 {
-	font-size: 2rem;
-	padding-top: 1em;
+	font-size: 1.5rem;
 }
 h2 {
-	font-size: 1.5rem;
-	padding-top: 1em;
+	font-size: 1.25rem;
 }
 h3 {
-	font-size: 1.25rem;
-	padding-top: 1em;
+	font-size: 1.0rem;
 }
 h4 {
-	font-size: 1.0rem;
-	padding-top: 1em;
+	font-size: 0.875rem;
 }
 h5 {
-	font-size: 0.875rem;
-	padding-top: 1em;
+	font-size: 0.75rem;
 }
 h6 {
-	font-size: 0.75rem;
+	font-size: 0.5rem;
 }
 
 
@@ -544,6 +544,7 @@ header {
 }
 
 footer {
+	font-size: 0.75rem;
 	clear: both;
 }
 
@@ -599,7 +600,6 @@ footer a.link-transition {
 header > nav a:link,
 header > nav a:visited {
 	color: #a00000;
-	font-size: 1.25rem;
 }
 header > nav a {
 	display: block;
@@ -769,7 +769,6 @@ hr.docutils {
 .code .punctuation { color: #888888 } /* .p */
 .code .text.whitespace { color: #a89028 } /* .w */
 
-
 /* Formats for <CODE> elements (inline) */
 
 /* lovelace */
@@ -843,4 +842,39 @@ code .operator { color: #666666 } /* .o */
 code .operator.word { color: #a848a8 } /* .ow */
 code .punctuation { color: #888888 } /* .p */
 code .text.whitespace { color: #a89028 } /* .w */
+
+
+
+/*****************************************************************************/
+/* Simple 'responsive' behavior                                              */
+
+html {
+	font-size: 12px;
+	/* ACA: 8px might make the font scaling work better? */
+}
+
+@media (min-width: 400px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+@media (min-width: 800px) {
+	html {
+		font-size: 24px;
+	}
+}
+
+@media (min-width: 900px) {
+	section {
+		padding-left: 10%;
+	}
+}
+
+@media (min-width: 1300px) {
+	section {
+		padding-left: 20%;
+	}
+}
+
 
