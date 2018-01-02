@@ -10,7 +10,7 @@
       {{- $section_name := index (.Site.Params.mainSections) 0 }}
       <div>
         {{- with .Site.GetPage "section" $section_name }}
-          <h1>Recent Activity in {{ .Title }}</h1>
+	<h1>Recent Activity in <a href="{{ .URL }}">{{ .Title }}</a></h1>
         {{- end -}}
         {{- range (first 3 $section) -}}
           {{ .Render "summary" }}
@@ -18,7 +18,7 @@
         {{- if ge $section_count 4 -}}
           <hr class="docutils">
           {{- with .Site.GetPage "section" $section_name -}}
-            <h2>More from {{ .Title }}</h2>
+	  <h2>More from <a href="{{ .URL }}">{{ .Title }}</a></h2>
           {{- end -}}
           <ul>
           {{- range (first 4 (after 3 $section)) -}}

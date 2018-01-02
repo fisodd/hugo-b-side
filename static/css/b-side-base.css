@@ -8,12 +8,11 @@
  * foreground: #111111
  * background: #fffff6 -- from Edward Morbius (for a very warm "white")
  * selection color: #b4d5fe -- straight from Adam Schwartz's "Smarter Link"
- * Borders: #ddb #ccc (use #cccccc, and #eeeeee maybe #e4e4e4)
- * Yellow highlight: #f2f2a6 (yellow, 75% saturation, 80% lightness)
- * ... or #f5f5a3 (80%sat, 80%light)
- * Yellow text: #fbe54e hsl(yellow/52, 96%, 65%)
+ * Borders: #cccccc, and #eeeeee maybe #e4e4e4
+ * Yellow highlight: #fbe54e hsl(yellow/52, 96%, 65%)
+ * Yellow for Error: #f2f2a6 (yellow, 75% saturation, 80% lightness)
  * Citation table and left-edge of admonitons: #808080
- * Rubric: #a00000
+ * Rubric and headers: #a00000
  */
 
 
@@ -36,21 +35,6 @@ body {
 
 
 /* -- Overall -------------------------------------------------------------- */
-
-/*ACA
-li p,
-dd p,
-table p,
-blockquote p,
-table.footnote p,
-div.sidebar p,
-div.legend p,
-div.figure p.caption {
-	width: auto;
-	font-size: 1rem;
-	line-height: 1.25;
-}
-ACA*/
 
 article {
 	line-height: 1.5;
@@ -202,7 +186,7 @@ div.error p.admonition-title {
 
 div.body p.centered {
 	text-align: center;
-	margin-top: 25px; /* ACA -- if needed, should be in "em" */
+	margin-top: 0.5em;
 }
 
 
@@ -619,6 +603,18 @@ header > nav a img {
 	top: -1.5rem;
 }
 
+div.bside-footer-copy {
+	float: left;
+}
+div.bside-footer-info {
+	float: right;
+}
+div.bside-footer::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
 
 
 /*****************************************************************************/
@@ -850,7 +846,6 @@ code .text.whitespace { color: #a89028 } /* .w */
 
 html {
 	font-size: 12px;
-	/* ACA: 8px might make the font scaling work better? */
 }
 
 @media (min-width: 400px) {
