@@ -125,18 +125,18 @@ img {
 	/*
 	 * Admonitions: push to sidebar space
 	 */
-	div.admonition {
+	div.section > div.admonition,
+	div.document > div.admonition {
 		position: relative;
 		float: right;
 		clear: right;
 		width: 30%;
-
-		text-align: left;
-		line-height: 1.25;
 	}
 	div.admonition > * {
 		width: auto;
-		font-size: 1rem;
+		font-size: 0.75rem;
+		text-align: left;
+		line-height: 1.25;
 	}
 
 
