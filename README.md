@@ -17,10 +17,10 @@ Including
 
 - [Images](https://hugo-b-side-demo.netlify.com/post/using-bside/#images) and [figures](https://hugo-b-side-demo.netlify.com/post/tufte/#figures)
 - [Sidenotes](https://hugo-b-side-demo.netlify.com/post/tufte/#sidenotes) and [citations](https://hugo-b-side-demo.netlify.com/post/hugo-and-rest/#citations)
-- [Pull-quotes](https://hugo-b-side-demo.netlify.com/post/hugo-and-rest/#pullquotes]) and [epigraphs](https://hugo-b-side-demo.netlify.com/post/tufte/#epigraphs)
+- [Pull-quotes](https://hugo-b-side-demo.netlify.com/post/hugo-and-rest/#pullquotes) and [epigraphs](https://hugo-b-side-demo.netlify.com/post/tufte/#epigraphs)
 - [Sidebars](https://hugo-b-side-demo.netlify.com/post/using-bside/#sidebars)
-- [Admonitions](https://hugo-b-side-demo.netlify.com/post/using-bside/#admonitions) and topics, notably including topics containing the [table of contents]((https://hugo-b-side-demo.netlify.com/post/using-bside/#contents))
-- Support for [inline math](https://hugo-b-side-demo.netlify.com/post/using-bside/#math) and [code directives]((https://hugo-b-side-demo.netlify.com/post/tufte/#code))
+- [Admonitions](https://hugo-b-side-demo.netlify.com/post/using-bside/#admonitions) and topics, notably including topics containing the [table of contents](https://hugo-b-side-demo.netlify.com/post/using-bside/#contents)
+- Support for [inline math](https://hugo-b-side-demo.netlify.com/post/using-bside/#math) and [code directives](https://hugo-b-side-demo.netlify.com/post/tufte/#code)
 - [Tables](https://hugo-b-side-demo.netlify.com/post/using-bside/#tables), including all forms of reStructuredText alternative table markup: [list-tables](http://docutils.sourceforge.net/docs/ref/rst/directives.html#list-table), [field lists](http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#field-lists), even [bibliographic fields](http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#bibliographic-fields)
 
 With
@@ -70,7 +70,9 @@ and modify to suit your needs.
 
 Create a piece of content with ".rst" as the suffix.
 
-example: hugo new content/post/first-post.rst
+example:
+
+    $ hugo new content/post/first-post.rst
 
 Note: Hugo recognizes files ending with a ".rst" suffix as
 [reStructuredText](http://docutils.sourceforge.net/rst.html)
