@@ -13,6 +13,7 @@
  * Yellow for Error: #f2f2a6 (yellow, 75% saturation, 80% lightness)
  * Citation table and left-edge of admonitons: #808080
  * Rubric and headers: #a00000
+ * "dim" sets foreground to: #444444
  */
 
 
@@ -620,6 +621,15 @@ div.bside-footer::after {
 
 /*****************************************************************************/
 /* B-Side Flourishes                                                         */
+
+/* -- Modifiers -------------------------------------------------------------*/
+.dim {
+	color: #444444;
+}
+
+.smaller {
+	font-size: 75%;
+}
 
 
 /* -- Fancy underlining for links -------------------------------------------*/
