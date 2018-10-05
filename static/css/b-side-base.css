@@ -235,8 +235,7 @@ blockquote.epigraph p.attribution {
 }
 
 blockquote.pull-quote {
-	padding-top: 1em;
-	padding-left: 1em;
+	padding: 0.5em 4rem 0.5em 2rem;
         font-weight: bold;
         font-style: oblique;
         font-size: 1.5rem;
@@ -271,6 +270,8 @@ pre {
 	margin-left: 2em;
 	margin-right: 2em;
 	border-left: solid 1px #808080;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 	overflow: auto;
 	overflow-y: hidden;  /* fixes display issues on Chrome browsers */
 	font-family: "Roboto Mono", monospace;
